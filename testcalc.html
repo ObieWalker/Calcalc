@@ -4,41 +4,85 @@
 <head>
 <title>Online Calculator Project</title>
 </head>
-<body>
+<body id='background'>
 
 <h2 >Online Calculator</h2>
-</br></br></br>
 
-<form>
- <input type="text" size="999999999999" maxlength="999999999999" >
-</form>
 
-<p>
-<button type="button">+</button>
-<button type="button">-</button>
-<button type="button">/</button>
-<button type="button">*</button>
-<button type="button">9</button>
-<button type="button">8</button>
-<button type="button">7</button>
-<button type="button">6</button>
-<button type="button">5</button>
-<button type="button">4</button>
-<button type="button">3</button>
-<button type="button">2</button>
-<button type="button">1</button>
-<button type="button">0</button>
-<button type="button">.</button>
-<button type="button">C</button>
-<button type="button">backspace</button>
-<button type="button">()</button>
-<button type="button">=</button>
-<button type="button">(+/-)</button>
-</p>
+
+</div>
+ <div id= "all">
+<div >
+<button type="button" class="bksp" "vertical-align:middle">bksp</button>
+</div>
+<div>
+<button type="button" class="button">9</button>
+<button type="button" class="button">8</button>
+<button type="button" class="button">7</button>
+<button type="button" class="button">+</button>
+</div>
+<div>
+<button type="button" class="button">6</button>
+<button type="button" class="button">5</button>
+<button type="button" class="button">4</button>
+<button type="button" class="button">-</button>
+</div>
+<div>
+<button type="button" class="button">3</button>
+<button type="button" class="button">2</button>
+<button type="button" class="button">1</button>
+<button type="button" class="button">/</button>
+</div>
+<button type="button" class="button">0</button>
+<button type="button" class="button">.</button>
+<button type="button" class="button">C</button>
+<button type="button" class="button">*</button>
+
+<div>
+<button type="button" class="button">()</button>
+<button type="button" class="button">=</button>
+<button type="button" class="button">(+/-)</button>
+</div>
+
+</div>
 </body>
 
+
+
 <script>
-
-
+function myFunction() {
+    document.getElementById("power").innerHTML = "Ready....";
+}
 </script>
+
+<style>
+#input{
+font-size: 40px;
+}
+#background{
+	background-color: #9BA4BA;
+
+}
+#all{
+
+}
+.button {
+	height:70px;
+    width:70px;
+	border-radius: 20px;
+    background-color: #1B202C;
+    border: none;
+    color: white;
+	font-size: 30px;
+
+    display: inline;
+    
+    margin: 4px 4px;
+    cursor: pointer;
+
+}
+
+
+</style>
+
 </html>
