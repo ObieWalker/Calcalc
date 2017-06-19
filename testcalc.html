@@ -7,13 +7,34 @@
 <body id='background'>
 
 <h2 >Online Calculator</h2>
+</br></br></br>
+
+<table width="400">
+  <tr>
+    <td>January</td>
+  </tr>
+ 
+</table>
+<table border= "30">
+<tr>
+<td colspan =5></td>
+</tr>
+ <input type="text" size="999999999999" maxlength="999999999999" >
+ </table>
+ <form id='input'>
+</form>
+
+<p id="power" onclick="myFunction()">Power On</p>
+<div>
+<div>
+
 
 
 
 </div>
  <div id= "all">
 <div >
-<button type="button" class="bksp" "vertical-align:middle">bksp</button>
+<button type="button" class="bksp" >bksp</button>
 </div>
 <div>
 <button type="button" class="button">9</button>
@@ -52,6 +73,7 @@
 <script>
 function myFunction() {
     document.getElementById("power").innerHTML = "Ready....";
+	document.getElementById("power").style.background='#3e8e41';
 }
 </script>
 
@@ -64,9 +86,12 @@ font-size: 40px;
 
 }
 #all{
-
+	border-style: double;
+	border-width: 5px;
+	border-size: 100px;
 }
 .button {
+	
 	height:70px;
     width:70px;
 	border-radius: 20px;
@@ -79,7 +104,48 @@ font-size: 40px;
     
     margin: 4px 4px;
     cursor: pointer;
+}
+.button:hover {
+   background-color: #3e8e41;
+}
+.button:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+}
+#power{
+	height:70px;
+    width:70px;
+	border-radius: 50px;
+	position: center;
+    background-color: red;
+    border: none;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 5px 2px;
+	padding-top: 50px;
+    cursor: pointer
 
+}
+#power:hover {
+    background-color: #3e8e41;
+
+}
+	
+.bksp{
+	height: 50px;
+	width: 100px;
+	border-radius: 10px;
+	background-color: #960F0F;
+    border: none;
+    color: white;
+    text-align: center;
+	display: inline-block;
+    font-size: 20px;
+    margin: 4px 4px;
+    cursor: pointer;
+	vertical-align:middle;
 }
 
 
