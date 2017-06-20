@@ -6,18 +6,19 @@
 </head>
 <body id='background'>
 
-<h2 >Online Calculator</h2>
+<h1><strong>Online Calculator</strong></h1>
 </br></br></br>
 
 
 <div>
 <form id='input'>
 <table border= "5">
+<tr><td><h6>CASIQUO</h6></td></tr>
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
 <td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
-<!--<td style="display:none"><input name="M" type="number"></td>-->
- <td><p id="power" onclick="myPower()">Power On</p></td>
+<td style="display:none"><input name="M" type="number"></td>
+ <td><p id="power" onclick="myPower()"><strong>Power On</strong></p></td>
  </tr>
  </table>
  
@@ -29,35 +30,38 @@
 
  <div id= "all">
 <div >
-<button type="button" class="bksp" >bksp</button>
-<button class="clear" type="reset" value="Reset">C</button>
-<button class="clear" type="reset" value="Reset">CE</button>
+<input type="button" class="bksp" value='CE' onclick='clear()'></input>
+<!--<input class="bksp" type="button" value="C"></input>-->
+<button type="button" class="bksp" value='c' onclick='toScreen("c")'>C</button>
+<button type="button" class="clear" value='x^2' onclick='power()'>x^2</button>
 
 </div>
 <div>
-<button type="button" class="button">9</button>
-<button type="button" class="button">8</button>
-<button type="button" class="button">7</button>
-<button type="button" class="button">+</button>
+<td><input type='button' id="btn" value="9" onClick='toScreen("9")'></td>
+<!--<button type="button" class="button"  value= "9" >9</button>-->
+<button type="button" class="button" value='8' onclick='toScreen("8")'>8</button>
+<button type="button" class="button" value='7' onclick='toScreen("7")'>7</button>
+<button type="button" class="button" value='+' onclick='toScreen("+")'>+</button>
 </div>
 <div>
-<button type="button" class="button">6</button>
-<button type="button" class="button">5</button>
-<button type="button" class="button">4</button>
-<button type="button" class="button">-</button>
+<button type="button" class="button" value='6' onclick='toScreen("6")'>6</button>
+<button type="button" class="button" value='5' onclick='toScreen("5")'>5</button>
+<button type="button" class="button" value='4' onclick='toScreen("4")'>4</button>
+<button type="button" class="button" value='-' onclick='toScreen("-")'>-</button>
 </div>
 <div>
-<button type="button" class="button">3</button>
-<button type="button" class="button">2</button>
-<button type="button" class="button">1</button>
-<button type="button" class="button">/</button>
+<button type="button" class="button" value='3' onclick='toScreen("3")'>3</button>
+<button type="button" class="button" value='2' onclick='toScreen("2")'>2</button>
+<button type="button" class="button" value='1' onclick='toScreen("1")'>1</button>
+<button type="button" class="button" value='/' onclick='toScreen("/")'>/</button>
 </div>
-<button type="button" class="zero">0</button>
-<button type="button" class="button">.</button>
-<button type="button" class="button">*</button>
+<button type="button" class="zero" value='0' onclick='toScreen("0")'>0</button>
+<button type="button" class="button" value='.' onclick='toScreen(".")'>.</button>
+<button type="button" class="button" value='*' onclick='toScreen("*")'>*</button>
 
 <div>
-<button type="button" class="equals">=</button>
+<!--<button type="button" class="equals">=</button>-->
+<button type="button" class="equals" value='=' onclick='equal()'>=</button>
 <button type="button" class="button">()</button>
 
 <button type="button" class="button">(+/-)</button>
@@ -70,18 +74,39 @@
 
 
 <script>
+var screen = document.getElementById('display');
+
 function myPower() {
 
 	document.getElementById("power").innerHTML = "ON";
 	document.getElementById("power").style.background='#3e8e41';
 	 document.getElementById("input").reset();
-	
+		
 }
+
+//outputs what is typed to the screen
+function toScreen(x) {
+//concatenates
+	screen.value+=x;
+	
+	if(x==='c'){
+	screen.value='';
+	}
+}
+
+
+
 
 
 </script>
 
 <style>
+h6{
+	background-color:grey;
+	color:#1B202C;
+	padding: 0px;
+	margin:0px;
+}
 #display{
 	width:99%;
 	height:50px;
@@ -92,9 +117,12 @@ function myPower() {
 font-size: 40px;
 }
 #background{
+	color:white;
 	background-color: #9BA4BA;
-
-}
+	background: url("https://previews.123rf.com/images/olegdudko/olegdudko1508/olegdudko150800487/43246653-Laptop-and-papers-desk-work--Stock-Photo-table-business-coffee.jpg");
+	background-size: cover;
+	text-align:center;
+	}
 #all{
 	width: 346px;
     height: 470px;
@@ -104,6 +132,7 @@ font-size: 40px;
 	border-size: 50px;
 	border-radius: 20px;
 	box-sizing: border-box;
+	background-color: grey;
 	}
 .button {
 	
@@ -128,6 +157,29 @@ font-size: 40px;
 	transform: translateY(4px);
 	
 }
+#btn{
+	height:70px;
+    width:70px;
+	border-radius: 20px;
+    background-color: #1B202C;
+    border: none;
+    color: white;
+	font-size: 30px;
+
+    display: inline;
+    
+    margin: 4px 4px;
+    cursor: pointer;
+}
+#btn:hover {
+   background-color: #3e8e41;
+}
+#btn:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+	
+}
+
 #power{
 	height:50px;
     width:70px;
