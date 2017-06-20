@@ -28,12 +28,12 @@
 </div>
 
 
- <div id= "all">
+ <div id= "mainCalculator">
 <div >
 <input type="button" class="bksp" value='CE' onclick='clearOne()'></input>
 <!--<input class="bksp" type="button" value="C"></input>-->
 <button type="button" class="bksp" value='c' onclick='toScreen("c")'>C</button>
-<button type="button" class="square" value='x^2' onclick='power()'>x^2</button>
+<button type="button" class="square" value='x^2' onclick='power()'>x<sup>2</button>
 <button type="button" class="square" value='x½' onclick='sqrtOf()'>x<em>rt</em></button>
 <button type="button" class="square" value='1/x' onclick='inverseOf()'>1/x</button>
 
@@ -66,7 +66,7 @@
 <button type="button" class="equals" value='=' onclick='equal()'>=</button>
 <button type="button" class="bracket" value='(' onclick='toScreen("(")'>(</button>
 <button type="button" class="bracket" value=')' onclick='toScreen(")")'>)</button>
-<button type="button" class="button" value='+-' onclick='plusminus()'>(+/-)</button>
+<button type="button" class="button" value='+-' onclick='plusminus()'>+/-</button>
 
 </div>
 </form>
@@ -134,7 +134,18 @@ function inverseOf(){
 	screen.value=x;
 
 }
+function plusminus(){
+	x=screen.value;
+	
+	if (x>=1){
+	x=(-x);
+	}
+	else{
+	x=x*(-1);
+	}
+	screen.value=x;
 
+}
 
 </script>
 
@@ -149,6 +160,8 @@ h6{
 	width:99%;
 	height:50px;
 	font-size:20px;
+	border-radius:10px;
+	background-color:#c7c7b0;
 }
 
 #input{
@@ -161,14 +174,15 @@ font-size: 40px;
 	background-size: cover;
 	text-align:center;
 	}
-#all{
-	width: 346px;
+#mainCalculator{
+	width: 345px;
     height: 470px;
     border: 15px solid grey;
     box-sizing: border-box;
 	border-width: 10px;
 	border-size: 50px;
-	border-radius: 20px;
+	border-bottom-left-radius: 80%20px;
+	border-bottom-right-radius: 80%20px;
 	box-sizing: border-box;
 	background-color: grey;
 	}
@@ -340,6 +354,13 @@ font-size: 40px;
     cursor: pointer;
 
 }
+
+.bracket:hover {		
+   background-color: #3e8e41;		
+}		
+.bracket:active{		
+	background-color: #3e8e41;		
+	transform: translateY(4px);
 
 </style>
 
