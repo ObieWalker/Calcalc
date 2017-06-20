@@ -9,32 +9,30 @@
 <h2 >Online Calculator</h2>
 </br></br></br>
 
-<table width="400">
-  <tr>
-    <td>January</td>
-  </tr>
- 
-</table>
-<table border= "30">
+
+<div>
+<form id='input'>
+<table border= "5">
 <tr>
-<td colspan =5></td>
-</tr>
- <input type="text" size="999999999999" maxlength="999999999999" >
+<!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
+<td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
+<!--<td style="display:none"><input name="M" type="number"></td>-->
+ <td><p id="power" onclick="myPower()">Power On</p></td>
+ </tr>
  </table>
- <form id='input'>
-</form>
-
-<p id="power" onclick="myFunction()">Power On</p>
-<div>
-<div>
-
-
-
+ 
+<!--</form>
+-->
 
 </div>
+
+
  <div id= "all">
 <div >
 <button type="button" class="bksp" >bksp</button>
+<button class="clear" type="reset" value="Reset">C</button>
+<button class="clear" type="reset" value="Reset">CE</button>
+
 </div>
 <div>
 <button type="button" class="button">9</button>
@@ -54,30 +52,42 @@
 <button type="button" class="button">1</button>
 <button type="button" class="button">/</button>
 </div>
-<button type="button" class="button">0</button>
+<button type="button" class="zero">0</button>
 <button type="button" class="button">.</button>
-<button type="button" class="button">C</button>
 <button type="button" class="button">*</button>
 
 <div>
+<button type="button" class="equals">=</button>
 <button type="button" class="button">()</button>
-<button type="button" class="button">=</button>
+
 <button type="button" class="button">(+/-)</button>
 </div>
-
+</form>
 </div>
+
 </body>
 
 
 
 <script>
-function myFunction() {
-    document.getElementById("power").innerHTML = "Ready....";
+function myPower() {
+
+	document.getElementById("power").innerHTML = "ON";
 	document.getElementById("power").style.background='#3e8e41';
+	 document.getElementById("input").reset();
+	
 }
+
+
 </script>
 
 <style>
+#display{
+	width:99%;
+	height:50px;
+	font-size:20px;
+}
+
 #input{
 font-size: 40px;
 }
@@ -86,10 +96,15 @@ font-size: 40px;
 
 }
 #all{
-	border-style: double;
-	border-width: 5px;
-	border-size: 100px;
-}
+	width: 346px;
+    height: 470px;
+    border: 15px solid grey;
+    box-sizing: border-box;
+	border-width: 10px;
+	border-size: 50px;
+	border-radius: 20px;
+	box-sizing: border-box;
+	}
 .button {
 	
 	height:70px;
@@ -111,9 +126,10 @@ font-size: 40px;
 .button:active{
 	background-color: #3e8e41;
 	transform: translateY(4px);
+	
 }
 #power{
-	height:70px;
+	height:50px;
     width:70px;
 	border-radius: 50px;
 	position: center;
@@ -124,18 +140,18 @@ font-size: 40px;
     display: inline-block;
     font-size: 15px;
     margin: 5px 2px;
-	padding-top: 50px;
+	padding-top: 30px;
     cursor: pointer
 
 }
 #power:hover {
-    background-color: #3e8e41;
+    background-color: #3e8e42;
 
 }
 	
 .bksp{
 	height: 50px;
-	width: 100px;
+	width: 97px;
 	border-radius: 10px;
 	background-color: #960F0F;
     border: none;
@@ -147,7 +163,78 @@ font-size: 40px;
     cursor: pointer;
 	vertical-align:middle;
 }
+.bksp:hover {
+   background-color: #3e8e41;
+}
+.bksp:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+}
+.clear{
+	height: 50px;
+	width: 97px;
+	border-radius: 10px;
+	background-color: #960546;
+    border: none;
+    color: white;
+    text-align: center;
+	display: inline-block;
+    font-size: 20px;
+    margin: 4px 4px;
+    cursor: pointer;
+	vertical-align:middle;
+}
+.clear:hover {
+   background-color: #3e8e41;
+}
+.clear:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+}
+.zero{
+	height:70px;
+    width: 150px;
+	border-radius: 20px;
+    background-color: #1B202C;
+    border: none;
+    color: white;
+	font-size: 30px;
 
+    display: inline;
+    
+    margin: 4px 4px;
+    cursor: pointer;
+
+}
+.zero:hover {
+   background-color: #3e8e41;
+}
+.zero:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+}
+
+.equals{
+	height:70px;
+    width: 150px;
+	border-radius: 20px;
+    background-color: #1B202C;
+    border: none;
+    color: white;
+	font-size: 30px;
+
+    display: inline;
+    
+    margin: 4px 4px;
+    cursor: pointer;
+}
+.equals:hover {
+   background-color: #3e8e41;
+}
+.equals:active{
+	background-color: #3e8e41;
+	transform: translateY(4px);
+}
 
 </style>
 
