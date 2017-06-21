@@ -10,15 +10,16 @@
 </br></br></br>
 
 
-<div>
+<div >
 <form id='input'>
-<table border= "5">
-<tr><td><h6>CASIQUO</h6></td></tr>
+<table border= "5" id='table'>
+<tr ></tr>
+<tr id='toprow'><td><h6>CASIQUO</h6></td></tr>
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
 <td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
 <td style="display:none"><input name="M" type="number"></td>
- <td><p id="power" onclick="myPower()"><strong>Power On</strong></p></td>
+ <td><p id="power" onclick="myPower()"><strong>OFF</strong></p></td>
  </tr>
  </table>
  
@@ -33,8 +34,8 @@
 <input type="button" class="bksp" value='CE' onclick='clearOne()'></input>
 <!--<input class="bksp" type="button" value="C"></input>-->
 <button type="button" class="bksp" value='c' onclick='toScreen("c")'>C</button>
-<button type="button" class="square" value='x^2' onclick='power()'>x<sup>2</button>
-<button type="button" class="square" value='x½' onclick='sqrtOf()'>x<em>rt</em></button>
+<button type="button" class="square" value='x^2' onclick='powerOfTwo()'>x<sup>2</button>
+<button type="button" class="square" value='x½' onclick='sqrtOf()'>√x</em></button>
 <button type="button" class="square" value='1/x' onclick='inverseOf()'>1/x</button>
 
 </div>
@@ -70,6 +71,7 @@
 
 </div>
 </form>
+</br></br></br>
 </div>
 
 </body>
@@ -90,10 +92,13 @@ function myPower() {
 //outputs what is typed to the screen
 function toScreen(x) {
 //concatenates
+	var lock = document.getElementById("power").innerHTML ;
+	if  (lock === "ON"){
 	screen.value+=x;
 	
 	if(x==='c'){
 	screen.value='';
+	}
 	}
 }
 
@@ -105,7 +110,7 @@ function equal(){
 	
 }
 
-function power(){
+function powerOfTwo(){
 //this just multiples whatever is on the screen by itself
 	x= screen.value;
 	x=eval(x*x);
@@ -151,13 +156,20 @@ function plusminus(){
 
 <style>
 h6{
-	background-color:grey;
+	background-color:#110C0B;
 	color:#1B202C;
-	padding: 0px;
-	margin:0px;
+	padding: 5px;
+	margin:5px;
+}
+
+#table{
+ background-color: #110C0B;
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+ 	box-shadow: 5px 5px 5px #7F6E6B  ;
 }
 #display{
-	width:99%;
+	width:96%;
 	height:50px;
 	font-size:20px;
 	border-radius:10px;
@@ -166,6 +178,7 @@ h6{
 
 #input{
 font-size: 40px;
+
 }
 #background{
 	color:white;
@@ -177,14 +190,16 @@ font-size: 40px;
 #mainCalculator{
 	width: 345px;
     height: 470px;
-    border: 15px solid grey;
+    border: 10px solid #3E3B3A  ;
     box-sizing: border-box;
 	border-width: 10px;
-	border-size: 50px;
-	border-bottom-left-radius: 80%20px;
-	border-bottom-right-radius: 80%20px;
+	border-size: 25px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 	box-sizing: border-box;
-	background-color: grey;
+	background-color: #1B110F  ;
+	box-shadow: 5px 3px 5px #888888;
+	
 	}
 .button {
 	
