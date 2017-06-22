@@ -14,15 +14,23 @@
 <form id='input'>
 <table border= "5" id='table'>
 <tr ></tr>
-<tr id='toprow'><td><h6>CASIQUO</h6></td><td><A HREF="javascript:history.go(0)">.reset</A></td></tr>
+<tr id='toprow'><td><h6>CASIQUO</h6></td>
+<td><A HREF="javascript:history.go(0)">.reset</A></td></tr>
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
 <td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
 <td style="display:none"><input name="M" type="number"></td>
- <td><p id="power" onclick="myPower()"><strong>OFF</strong></p></td>
+ 
+ <td><label class="switch">
+  <input type="checkbox">
+  <div class="slider"></div>
+</label>
+</div><p id="power" onclick="myPower()"><strong>OFF</strong></p></td>
+ 
  </tr>
  </table>
- 
+ <div>
+
 <!--</form>
 -->
 
@@ -80,6 +88,9 @@
 
 <script>
 var screen = document.getElementById('display');
+
+
+
 
 function myPower() {
 
@@ -141,20 +152,26 @@ function inverseOf(){
 }
 function plusminus(){
 	x=screen.value;
-	
 	x=x*-1;
 	screen.value=x;
+	
 
 }
 
 </script>
 
 <style>
+
 h6{
 	background-color:#110C0B;
 	color:#1B202C;
 	padding: 5px;
 	margin:5px;
+}
+a:link{
+color: red;
+font-size: 20px;
+text-decoration: none;
 }
 
 #table{
@@ -163,13 +180,6 @@ h6{
  border-top-right-radius: 20px;
  	box-shadow: 5px 5px 5px #7F6E6B  ;
 }
-
-a:link{
-color: red;
-font-size: 20px;
-text-decoration: none;
-}
-
 #display{
 	width:96%;
 	height:50px;
@@ -190,7 +200,7 @@ font-size: 40px;
 	text-align:center;
 	}
 #mainCalculator{
-	width: 345px;
+	width: 380px;
     height: 470px;
     border: 10px solid #3E3B3A  ;
     box-sizing: border-box;
@@ -249,26 +259,7 @@ font-size: 40px;
 	
 }
 
-#power{
-	height:50px;
-    width:70px;
-	border-radius: 50px;
-	position: center;
-    background-color: red;
-    border: none;
-    color: black;
-    text-align: center;
-    display: inline-block;
-    font-size: 15px;
-    margin: 5px 2px;
-	padding-top: 30px;
-    cursor: pointer
 
-}
-#power:hover {
-    background-color: #3e8e42;
-
-}
 	
 .bksp{
 	height: 50px;
@@ -331,7 +322,7 @@ font-size: 40px;
    background-color: #3e8e41;
 }
 .zero:active{
-	background-color: yellow;
+	background-color: #3e8e41;
 	transform: translateY(4px);
 }
 
@@ -378,6 +369,90 @@ font-size: 40px;
 .bracket:active{		
 	background-color: #3e8e41;		
 	transform: translateY(4px);
+}
+
+/*CODE FOR THE POWER BUTTON*/	
+#power{
+	 position: relative;
+	display: inline-block;
+	width: 35px;
+	height: 34px;
+	border-radius: 30px;
+	position: center;
+    background-color: red;
+    border: none;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 5px 2px;
+	padding-top: 30px;
+    cursor: pointer
+
+}
+#power:hover {
+    background-color: #3e8e42;
+
+}
+
+/*everything below this point isn't my code */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+}
+
+.switch input {display:none;}
+/*code for slider*/
+.slider {
+
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;/*#ccc*/
+  -webkit-transition: .4s;
+  transition: .4s;
+    border-radius:10px;
+}
+
+
+ /*code for inner switch. the initial state*/
+.slider:before {
+  position: absolute;
+  content: "OFF ";
+  font-size:15px;
+  text-align:center;
+  height: 20px;
+  width: 30px;
+  left: 4px;
+  bottom: 4px;
+  background-color: grey;
+  -webkit-transition: .8s;
+  transition: .8s;
+    border-radius:5px;
+}
+
+input:checked + .slider {
+
+  background-color: green;/*#2196ff*/
+  /*color of switch changes after it slides*/
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 10px #2196F3;
+}
+/*this is carried out after the switched is checked*/
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+   content: "ON";
+   text-align:center;
+}
 
 </style>
 
