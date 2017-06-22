@@ -25,7 +25,7 @@
   <input type="checkbox">
   <div class="slider"></div>
 </label>
-</div><p id="power" onclick="myPower()"><strong>OFF</strong></p></td>
+</div><p id="power" onclick="myPower()">OFF</p></td>
  
  </tr>
  </table>
@@ -90,26 +90,41 @@
 var screen = document.getElementById('display');
 
 
-
+var checkPower=document.getElementById("power");
 
 function myPower() {
-
-	document.getElementById("power").innerHTML = "ON";
-	document.getElementById("power").style.background='#3e8e41';
-	document.getElementById("input").reset();
+	if (checkPower.innerHTML == "ON"){
+	document.getElementById("power").innerHTML = "OFF";
+	document.getElementById("power").style.background='red';
+	document.getElementById("input").reset();	
+	}
+	else {
+		document.getElementById("power").innerHTML = "ON";
+		document.getElementById("power").style.background='#3e8e41';
+		toScreen('0');
+	}
 		
 }
-
+ function clearSc(){
+		screen.value='';
+		//toScreen('x');
+ }
+ 
+ 
 //outputs what is typed to the screen
 function toScreen(x) {
 //concatenates
 	var lock = document.getElementById("power").innerHTML ;
 	if  (lock === "ON"){
+	if (screen.value === '0'){
+	clearSc();
+	}
 	screen.value+=x;
 	
 	if(x==='c'){
 	screen.value='';
 	}
+
 	}
 }
 
@@ -170,8 +185,9 @@ h6{
 }
 a:link{
 color: red;
-font-size: 20px;
+font-size: 15px;
 text-decoration: none;
+
 }
 
 #table{
@@ -186,6 +202,7 @@ text-decoration: none;
 	font-size:20px;
 	border-radius:10px;
 	background-color:#c7c7b0;
+	margin: 2px;
 }
 
 #input{
@@ -373,20 +390,20 @@ font-size: 40px;
 
 /*CODE FOR THE POWER BUTTON*/	
 #power{
-	 position: relative;
+	 position: center;
 	display: inline-block;
-	width: 35px;
-	height: 34px;
+	width: 31px;
+	height: 20px;
 	border-radius: 30px;
 	position: center;
     background-color: red;
     border: none;
     color: black;
-    text-align: center;
-    display: inline-block;
-    font-size: 15px;
-    margin: 5px 2px;
-	padding-top: 30px;
+    text-align: top;
+    font-size: 10px;
+	font-weight: bold;
+    margin: 2px 2px;
+	padding-top: 20px;
     cursor: pointer
 
 }
@@ -395,7 +412,7 @@ font-size: 40px;
 
 }
 
-/*everything below this point isn't my code */
+/*everything below this point is only 30% my code */
 .switch {
   position: relative;
   display: inline-block;
@@ -403,7 +420,9 @@ font-size: 40px;
   height: 28px;
 }
 
-.switch input {display:none;}
+.switch input {
+	display:none;
+}
 /*code for slider*/
 .slider {
 
@@ -423,11 +442,11 @@ font-size: 40px;
  /*code for inner switch. the initial state*/
 .slider:before {
   position: absolute;
-  content: "OFF ";
-  font-size:15px;
+  content: "Sci.Off ";
+  font-size:10px;
   text-align:center;
   height: 20px;
-  width: 30px;
+  width: 35px;
   left: 4px;
   bottom: 4px;
   background-color: grey;
