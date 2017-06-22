@@ -14,7 +14,7 @@
 <form id='input'>
 <table border= "5" id='table'>
 <tr ></tr>
-<tr id='toprow'><td><h6>CASIQUO</h6></td></tr>
+<tr id='toprow'><td><h6>CASIQUO</h6></td><td><A HREF="javascript:history.go(0)">.reset</A></td></tr>
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
 <td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
@@ -163,6 +163,13 @@ h6{
  border-top-right-radius: 20px;
  	box-shadow: 5px 5px 5px #7F6E6B  ;
 }
+
+a:link{
+color: red;
+font-size: 20px;
+text-decoration: none;
+}
+
 #display{
 	width:96%;
 	height:50px;
