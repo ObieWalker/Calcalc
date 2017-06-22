@@ -19,7 +19,7 @@
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
 <td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
-<td style="display:none"><input name="M" type="number"></td>
+<!--<td style="display:none"><input name="M" type="number"></td>-->
  
  <td><label class="switch">
   <input type="checkbox">
@@ -190,6 +190,11 @@ font-size: 15px;
 text-decoration: none;
 
 }
+td {
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+
+}
 
 #table{
  background-color: #110C0B;
@@ -323,7 +328,7 @@ font-size: 40px;
 }
 .zero{
 	height:70px;
-    width: 150px;
+    width: 160px;
 	border-radius: 20px;
     background-color: #1B202C;
     border: none;
@@ -346,7 +351,7 @@ font-size: 40px;
 
 .equals{
 	height:70px;
-    width: 150px;
+    width: 160px;
 	border-radius: 20px;
     background-color: #1B202C;
     border: none;
@@ -373,10 +378,10 @@ font-size: 40px;
     border: none;
     color: white;
 	font-size: 30px;
-
+	
     display: inline;
     
-    margin: 4px 4px;
+    margin: 4px 2px;
     cursor: pointer;
 
 }
