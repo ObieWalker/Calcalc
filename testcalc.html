@@ -39,11 +39,11 @@
 
  <div id= "mainCalculator">
 <div >
-<input type="button" class="bksp" value='CE' onclick='clearOne()'></input>
+<input type="button" class="bksp" value='←' onclick='clearOne()'></input>
 <!--<input class="bksp" type="button" value="C"></input>-->
 <button type="button" class="bksp" value='c' onclick='toScreen("c")'>C</button>
 <button type="button" class="square" value='x^2' onclick='powerOfTwo()'>x<sup>2</button>
-<button type="button" class="square" value='x½' onclick='sqrtOf()'>√x</em></button>
+<button type="button" class="square" value='x½' onclick='sqrtOf()'>√x</button>
 <button type="button" class="square" value='1/x' onclick='inverseOf()'>1/x</button>
 
 </div>
@@ -129,10 +129,11 @@ function toScreen(x) {
 }
 
 function equal(){
-
+	 if (screen.value !=''){
 	x=screen.value;
 	x=eval(x);//eval is used to evaluate a string. this sets it as x
 	screen.value=x;
+	}
 	
 }
 
@@ -167,7 +168,7 @@ function inverseOf(){
 }
 function plusminus(){
 	x=screen.value;
-	x=x*-1;
+	x=(x)*-1;
 	screen.value=x;
 	
 
