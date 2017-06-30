@@ -1,12 +1,118 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app= "myCalculator">
 
 <head>
 <title>Online Calculator Project</title>
-</head>
-<body id='background'>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!--<script type="text/javascript" src="script.js"></script>
+<script src="mainController.js"></script>-->
 
-<h1><strong>Online Calculator</strong></h1>
+
+<script>
+var app = angular.module('myCalculator', []);
+
+app.controller('mainController', 
+function($scope){
+	$scope.title = "Online Calculator";
+	$scope.brand= "CASIQUO";
+	$scope.display= "";
+	$scope.power="OFF";
+	
+$scope.toScreen= function(x){
+	var p= $scope.power;
+	if (p ==="ON"){
+		if ($scope.display === '0'){
+		$scope.clearIt();
+		}
+		$scope.display +=x;
+		
+	}
+	if (x==="c"){
+	$scope.clearIt();
+	}
+	
+}
+
+$scope.myPower= function(){
+	if ($scope.power==="OFF"){
+		$scope.power="ON";
+		$scope.display='0';
+		
+		}
+	else {
+		$scope.power="OFF";
+		$scope.display="";
+		
+			
+	}
+}
+
+
+
+$scope.equal = function(){
+	 if ($scope.display !=''){
+	x=$scope.display;
+	x=eval(x);//eval is used to evaluate a string. this sets it as x
+	$scope.display=x;
+	}
+	
+}	
+
+$scope.powerOfTwo=function() {
+
+	$scope.display=eval($scope.display*$scope.display);
+
+}
+
+$scope.sqrtOf = function() {
+
+	x=$scope.display;
+	x = Math.sqrt(x);
+	$scope.display=x;
+}
+
+$scope.inverseOf = function(){
+
+	x=$scope.display;
+	x = 1/x;
+	$scope.display=x;
+
+}
+
+ $scope.plusminus = function(){
+ 
+	x=$scope.display;
+	x=(x)*-1;
+	$scope.display=x;
+	
+
+}
+
+ $scope.clearOne = function(){
+	
+	var screenNum = $scope.display;
+	var len= screenNum.length-1;
+	var backOne = screenNum.substring(0,len);
+	$scope.display = backOne;
+}
+$scope.clearIt = function(){
+	$scope.display= "";
+
+}
+
+
+});
+</script>
+</head>
+
+
+
+
+
+
+<body id='background' ng-controller="mainController">
+
+<h1><strong> {{title}}</strong></h1>
 </br></br></br>
 
 
@@ -14,18 +120,18 @@
 <form id='input'>
 <table border= "5" id='table'>
 <tr ></tr>
-<tr id='toprow'><td><h6>CASIQUO</h6></td>
+<tr id='toprow'><td><h6>{{ brand}}</h6></td>
 <td><A HREF="javascript:history.go(0)">.reset</A></td></tr>
 <tr>
 <!--output key pressed on keyboard if it is a figure between 0 and 9 --> 
-<td><input id="display" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
+<td><input id="display" value="{{display}}" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text" ></td>
 <!--<td style="display:none"><input name="M" type="number"></td>-->
  
  <td><label class="switch">
   <input type="checkbox">
   <div class="slider"></div>
 </label>
-</div><p id="power" onclick="myPower()">OFF</p></td>
+</div><p id="power" ng-click="myPower()" > {{power}}</p></td>
  
  </tr>
  </table>
@@ -39,43 +145,43 @@
 
  <div id= "mainCalculator">
 <div >
-<input type="button" class="bksp" value='←' onclick='clearOne()'></input>
+<input type="button" class="bksp" value='←' ng-click='clearOne()'></input>
 <!--<input class="bksp" type="button" value="C"></input>-->
-<button type="button" class="bksp" value='c' onclick='toScreen("c")'>C</button>
-<button type="button" class="square" value='x^2' onclick='powerOfTwo()'>x<sup>2</button>
-<button type="button" class="square" value='x½' onclick='sqrtOf()'>√x</button>
-<button type="button" class="square" value='1/x' onclick='inverseOf()'>1/x</button>
+<button type="button" class="bksp" value='c' ng-click='toScreen("c")'>C</button>
+<button type="button" class="square" value='x^2' ng-click='powerOfTwo()'>x<sup>2</button>
+<button type="button" class="square" value='x½' ng-click='sqrtOf()'>√x</button>
+<button type="button" class="square" value='1/x' ng-click='inverseOf()'>1/x</button>
 
 </div>
 <div>
-<td><input type='button' id="btn" value="9" onClick='toScreen("9")'></td>
+<td><input type='button' id="btn" value="9" ng-click='toScreen("9")'></td>
 <!--<button type="button" class="button"  value= "9" >9</button>-->
-<button type="button" class="button" value='8' onclick='toScreen("8")'>8</button>
-<button type="button" class="button" value='7' onclick='toScreen("7")'>7</button>
-<button type="button" class="button" value='+' onclick='toScreen("+")'>+</button>
+<button type="button" class="button" value='8' ng-click='toScreen("8")'>8</button>
+<button type="button" class="button" value='7' ng-click='toScreen("7")'>7</button>
+<button type="button" class="button" value='+' ng-click='toScreen("+")'>+</button>
 </div>
 <div>
-<button type="button" class="button" value='6' onclick='toScreen("6")'>6</button>
-<button type="button" class="button" value='5' onclick='toScreen("5")'>5</button>
-<button type="button" class="button" value='4' onclick='toScreen("4")'>4</button>
-<button type="button" class="button" value='-' onclick='toScreen("-")'>-</button>
+<button type="button" class="button" value='6' ng-click='toScreen("6")'>6</button>
+<button type="button" class="button" value='5' ng-click='toScreen("5")'>5</button>
+<button type="button" class="button" value='4' ng-click='toScreen("4")'>4</button>
+<button type="button" class="button" value='-' ng-click='toScreen("-")'>-</button>
 </div>
 <div>
-<button type="button" class="button" value='3' onclick='toScreen("3")'>3</button>
-<button type="button" class="button" value='2' onclick='toScreen("2")'>2</button>
-<button type="button" class="button" value='1' onclick='toScreen("1")'>1</button>
-<button type="button" class="button" value='/' onclick='toScreen("/")'>/</button>
+<button type="button" class="button" value='3' ng-click='toScreen("3")'>3</button>
+<button type="button" class="button" value='2' ng-click='toScreen("2")'>2</button>
+<button type="button" class="button" value='1' ng-click='toScreen("1")'>1</button>
+<button type="button" class="button" value='/' ng-click='toScreen("/")'>/</button>
 </div>
-<button type="button" class="zero" value='0' onclick='toScreen("0")'>0</button>
-<button type="button" class="button" value='.' onclick='toScreen(".")'>.</button>
-<button type="button" class="button" value='*' onclick='toScreen("*")'>*</button>
+<button type="button" class="zero" value='0' ng-click='toScreen("0")'>0</button>
+<button type="button" class="button" value='.' ng-click='toScreen(".")'>.</button>
+<button type="button" class="button" value='*' ng-click='toScreen("*")'>*</button>
 
 <div>
 <!--<button type="button" class="equals">=</button>-->
-<button type="button" class="equals" value='=' onclick='equal()'>=</button>
-<button type="button" class="bracket" value='(' onclick='toScreen("(")'>(</button>
-<button type="button" class="bracket" value=')' onclick='toScreen(")")'>)</button>
-<button type="button" class="button" value='+-' onclick='plusminus()'>+/-</button>
+<button type="button" class="equals" value='=' ng-click='equal()'>=</button>
+<button type="button" class="bracket" value='(' ng-click='toScreen("(")'>(</button>
+<button type="button" class="bracket" value=')' ng-click='toScreen(")")'>)</button>
+<button type="button" class="button" value='+-' ng-click='plusminus()'>+/-</button>
 
 </div>
 </form>
@@ -84,97 +190,6 @@
 
 </body>
 
-
-
-<script>
-var screen = document.getElementById('display');
-
-
-var checkPower=document.getElementById("power");
-
-function myPower() {
-	if (checkPower.innerHTML == "ON"){
-	document.getElementById("power").innerHTML = "OFF";
-	document.getElementById("power").style.background='red';
-	document.getElementById("input").reset();	
-	}
-	else {
-		document.getElementById("power").innerHTML = "ON";
-		document.getElementById("power").style.background='#3e8e41';
-		toScreen('0');
-	}
-		
-}
- function clearSc(){
-		screen.value='';
-		//toScreen('x');
- }
- 
- 
-//outputs what is typed to the screen
-function toScreen(x) {
-//concatenates
-	var lock = document.getElementById("power").innerHTML ;
-	if  (lock === "ON"){
-	if (screen.value === '0'){
-	clearSc();
-	}
-	screen.value+=x;
-	
-	if(x==='c'){
-	screen.value='';
-	}
-
-	}
-}
-
-function equal(){
-	 if (screen.value !=''){
-	x=screen.value;
-	x=eval(x);//eval is used to evaluate a string. this sets it as x
-	screen.value=x;
-	}
-	
-}
-
-function powerOfTwo(){
-//this just multiples whatever is on the screen by itself
-	x= screen.value;
-	x=eval(x*x);
-	screen.value=x;
-
-}
-function clearOne(){
-	
-	var screenNum = screen.value;
-	var len= screenNum.length-1;
-	var backOne = screenNum.substring(0,len);
-	screen.value = backOne;
-}
-
-function sqrtOf() {
-
-	x=screen.value;
-	x = Math.sqrt(x);
-	screen.value=x;
-}
-
-function inverseOf(){
-
-	x=screen.value;
-	x = 1/x;
-	screen.value=x;
-
-}
-function plusminus(){
-	x=screen.value;
-	x=(x)*-1;
-	screen.value=x;
-	
-
-}
-
-</script>
 
 <style>
 
@@ -418,7 +433,7 @@ font-size: 40px;
 
 }
 
-/*everything below this point is only 30% my code */
+/*everything below this point is possibly all my code */
 .switch {
   position: relative;
   display: inline-block;
@@ -466,10 +481,10 @@ input:checked + .slider {
   background-color: green;/*#2196ff*/
   /*color of switch changes after it slides*/
 }
-
+/*
 input:focus + .slider {
   box-shadow: 0 0 10px #2196F3;
-}
+}*/
 /*this is carried out after the switched is checked*/
 input:checked + .slider:before {
   -webkit-transform: translateX(20px);
@@ -480,5 +495,7 @@ input:checked + .slider:before {
 }
 
 </style>
+
+</html>
 
 </html>
